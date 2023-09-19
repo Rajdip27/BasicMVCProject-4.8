@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using BankSolution.Data;
 using BankSolution.Models;
 using BankSolution.Services;
 using System;
@@ -39,6 +40,7 @@ namespace BankSolution
 
         private static void RegisterApplicationServices(ContainerBuilder builder)
         {
+            builder.Register(x=>BankContext.Create()).AsSelf();
             builder.RegisterType<UserRepository>().AsImplementedInterfaces().AsSelf().InstancePerLifetimeScope();
             builder.RegisterType<UserServices>().AsImplementedInterfaces().AsSelf().InstancePerRequest();
         }

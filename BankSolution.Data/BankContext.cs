@@ -18,6 +18,11 @@ namespace BankSolution.Data
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<State> States { get; set; }
 
+        public static BankContext Create()
+        {
+            return new BankContext();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<City>()
